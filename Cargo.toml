@@ -1,0 +1,8 @@
+[package]
+name = "Tic_Tac_Toe"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cursive = { git = "https://github.com/gyscos/cursive" }
+console = "0.15.11"
