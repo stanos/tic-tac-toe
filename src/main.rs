@@ -6,9 +6,9 @@ use console::Term;
 fn draw_play_field(play_field: &Vec<Vec<&str>>, turn_count: &mut i32, term: &Term) {
     term.write_line("   1   2   3").unwrap();
     term.write_line(&format!("1  {} | {} | {}", play_field[0][0], play_field[0][1], play_field[0][2])).unwrap();
-    term.write_line(" -----------").unwrap();
+    term.write_line(" -------------").unwrap();
     term.write_line(&format!("2  {} | {} | {}", play_field[1][0], play_field[1][1], play_field[1][2])).unwrap();
-    term.write_line(" -----------").unwrap();
+    term.write_line(" -------------").unwrap();
     term.write_line(&format!("3  {} | {} | {}", play_field[2][0], play_field[2][1], play_field[2][2])).unwrap();
     term.write_line("").unwrap();
     *turn_count += 1;
@@ -68,6 +68,8 @@ fn main(){
             } else {
                 current_player = "X";
             }
+
+            draw_play_field(&play_field, &mut turn_count, &term);
             if col == 0 {
                 if play_field[row][1] == play_field[row][2] && play_field[row][1] == play_field[row][0] {
                     term.write_line(&format!("Player {} wins!", play_field[row][0])).unwrap();
@@ -104,6 +106,5 @@ fn main(){
             turn_count -= 1;
             term.write_line("Cell is already occupied. Try again.").unwrap();
         }
-        draw_play_field(&play_field, &mut turn_count, &term);
     }
 }
